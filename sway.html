@@ -1,0 +1,358 @@
+<!--
+Sway - Single-file Landing Page
+Edit: replace LOGO_URL, PHONE_PAL, PHONE_JO, SOCIAL links below.
+How to use:
+- Save as index.html and upload to hosting (Netlify / GitHub Pages / any static host).
+- Add real WhatsApp numbers in the data attributes and the CONTACTS area.
+- Add your logo image and replace LOGO_URL placeholder.
+
+LOGO NOTE: Logo design suggestion (based on your brief):
+- Word: "sway" in lowercase, use a luxurious golden-yellow color (#ffd200 or slightly darker for metallic look).
+- Make the letter "y" shaped like a cup/glass; add a small wave curve inside/above the cup to suggest liquid.
+- Keep the logo clean and balanced so it works on dark (black) and light (white) backgrounds.
+
+SEO: meta tags + JSON-LD included. Create sitemap.xml and submit to Google Search Console.
+-->
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sway | إحياء الحفلات - مشاريب و طعام</title>
+  <meta name="description" content="Sway - فريق إحياء حفلات احتفالية بالمشاريب والطعام في فلسطين والأردن. خدمات تموين، بار متنقل، تنسيق طعام وحجز مرن.">
+  <meta name="keywords" content="حفلات, تموين, بار متنقل, مشاريب, طعام, فلسطين, الأردن, Sway">
+  <meta name="theme-color" content="#ffd200">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sway - إحياء الحفلات">
+  <meta property="og:description" content="فريق Sway يقدّم تجربة احتفالية كاملة: مشاريب، طعام، وتنسيق حفلات في فلسطين والأردن.">
+  <meta property="og:image" content="photo_2025-11-25_23-24-53-removebg-preview.png">
+  <meta property="og:type" content="website">
+  
+  <!-- Flag Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/css/flag-icons.min.css">
+
+  <!-- JSON-LD Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Sway",
+    "description": "إحياء الحفلات - مشاريب وطعام في فلسطين والأردن",
+    "url": ".",
+    "logo": "photo_2025-11-25_23-24-53-removebg-preview.png",
+    "address": [{"@type":"PostalAddress","addressCountry":"PS","addressLocality":"Palestine"},{"@type":"PostalAddress","addressCountry":"JO","addressLocality":"Jordan"}],
+    "sameAs": ["https://www.instagram.com/sway.ps/","FACEBOOK_LINK","TIKTOK_LINK","SNAPCHAT_LINK"]
+  }
+  </script>
+
+  <style>
+    :root{
+      --yellow:#ffd200; /* primary */
+      --black:#111;
+      --white:#fff;
+      --gap:18px;
+      --maxw:1100px;
+      --radius:14px;
+      font-family: 'Segoe UI', Tahoma, system-ui, -apple-system, 'Noto Sans Arabic', 'Cairo', sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,var(--white),#fff);color:var(--black);line-height:1.5}
+    header{background:var(--black);color:var(--white);padding:18px 12px;position:sticky;top:0;z-index:40}
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 16px}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{height:46px;border-radius:8px}
+    .brand h1{font-size:20px;margin:0;letter-spacing:.6px}
+    nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:0}
+    nav a{color:var(--white);text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:600}
+    nav a:hover{background:rgba(255,255,255,0.06)}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr;gap:24px;align-items:center;padding:48px 0}
+    .hero-grid{display:grid;grid-template-columns:1fr;gap:18px}
+    .hero-card{background:linear-gradient(180deg,var(--white),#fff);border-radius:var(--radius);box-shadow:0 8px 30px rgba(0,0,0,.08);overflow:hidden}
+    .carousel{height:340px;position:relative;overflow:hidden}
+    .carousel video{width:100%;height:100%;object-fit:cover;display:block;transform:translateZ(0)}
+    .carousel .overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.25),rgba(0,0,0,0.1));display:flex;align-items:flex-end;padding:18px}
+    .cta{display:flex;gap:12px;align-items:center}
+    .btn{background:var(--yellow);color:var(--black);padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700}
+    .btn-outline{background:transparent;border:2px solid var(--yellow);color:var(--yellow);padding:8px 14px;border-radius:10px}
+
+    /* sections */
+    section{padding:36px 0}
+    .section-title{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+    .section-title h2{margin:0}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:var(--white);padding:16px;border-radius:12px;box-shadow:0 8px 18px rgba(0,0,0,.04)}
+    .card video{transform:translateZ(0)}
+
+    /* booking */
+    .booking{display:grid;grid-template-columns:1fr 360px;gap:18px}
+    form{display:flex;flex-direction:column;gap:12px}
+    input,select,textarea{padding:12px;border-radius:8px;border:1px solid #e8e8e8;font-size:15px}
+    .contact-list{display:flex;flex-direction:column;gap:12px}
+    .wa{display:flex;gap:8px;align-items:center}
+    .wa a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;padding:8px 12px;border-radius:10px;background:linear-gradient(90deg,var(--black),#222);color:var(--white)}
+
+    /* Social Icons */
+    .social-icons{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:8px}
+    .social-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease;background:var(--white);box-shadow:0 2px 8px rgba(0,0,0,.1)}
+    .social-icon:hover{transform:translateY(-3px);box-shadow:0 4px 12px rgba(0,0,0,.15)}
+    .social-icon svg{width:24px;height:24px}
+    .social-icon.instagram svg{fill:#E4405F}
+    .social-icon.facebook svg{fill:#1877F2}
+    .social-icon.tiktok svg{fill:#000000}
+    .social-icon.snapchat{background:transparent;box-shadow:none;padding:2px}
+    .social-icon.snapchat img{width:100%;height:100%;object-fit:contain;display:block}
+    .social-icon.snapchat:hover{transform:translateY(-3px);box-shadow:0 4px 12px rgba(255,252,0,.3)}
+
+    footer{background:#0b0b0b;color:#ddd;padding:28px 0}
+    footer .foot-grid{display:flex;justify-content:space-between;gap:18px;align-items:center}
+
+    /* responsiveness */
+    @media (max-width:900px){
+      .grid-3{grid-template-columns:1fr}
+      .booking{grid-template-columns:1fr}
+      .hero{padding:28px 0}
+      .carousel{height:260px}
+      nav ul{display:none}
+    }
+
+    @media (prefers-reduced-motion: no-preference){
+      .carousel video{transition:opacity .7s ease}
+      .card{transition:transform .28s ease, box-shadow .28s ease}
+      .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,.08)}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <img src="photo_2025-11-25_23-24-53-removebg-preview.png" alt="Sway logo">
+        </div>
+      <nav>
+        <ul>
+          <li><a href="#photos">صور</a></li>
+          <li><a href="#vision">رؤيتنا</a></li>
+          <li><a href="#services">الخدمات</a></li>
+          <li><a href="#booking">تواصل</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="home">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <div class="carousel" id="carousel">
+            <video src="2.mp4" autoplay muted data-index="0"></video>
+            <video src="1.mp4" muted style="opacity:0;position:absolute;inset:0" data-index="1"></video>
+            <video src="3.mp4" muted style="opacity:0;position:absolute;inset:0" data-index="2"></video>
+            <div class="overlay">
+              <div style="width:100%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap">
+                <div>
+                  <h2 style="margin:0;color:var(--white);font-size:28px">Sway — إحياء الحفلات</h2>
+                  <p style="margin:6px 0 0;color:rgba(255,255,255,.9)">مشاريب، طعام، وتموين في فلسطين والأردن — نجعل مناسباتكم لا تُنسى</p>
+                </div>
+                <div class="cta">
+                  <a class="btn" href="#booking">احجز الآن</a>
+                  <a class="btn-outline" href="#services">الخدمات</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:12px;align-items:center;justify-content:space-between">
+          <div class="card" style="flex:1">
+            <h3 style="margin-top:0">خدماتنا المميزة</h3>
+            <ul>
+              <li>بار متنقل احترافي</li>
+              <li>تنسيق أطباق تموينية</li>
+              <li>طاقم خدمة وتجهيز موقع الحفل</li>
+              <li>قوائم مشروبات مخصصة</li>
+            </ul>
+          </div>
+          <div class="card" style="width:220px;text-align:center">
+            <h3 style="margin:0">مساحات التغطية</h3>
+            <p style="margin:6px 0 0">فلسطين • الأردن</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="photos">
+      <div class="section-title"><h2>مقتطفات من حفلاتنا</h2></div>
+      <div class="grid-3">
+        <div class="card"><video src="2.mp4" autoplay loop muted style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px"></video><p>تصاميم تقديم احتفالية ومشروبات مميزة.</p></div>
+        <div class="card"><video src="1.mp4" autoplay loop muted style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px"></video><p>قوائم طعام منتقاة بعناية.</p></div>
+        <div class="card"><video src="3.mp4" autoplay loop muted style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px"></video><p>طاقم محترف وتجهيز متكامل.</p></div>
+      </div>
+    </section>
+
+    <section id="vision">
+      <div class="section-title"><h2>رؤيتنا</h2></div>
+      <div class="card" style="padding:20px">
+        <p>بدأت فكرة <strong>Sway</strong> في عام 2021 واستمرت حتى يومنا هذا، ومع دخولنا للفصل القادم من العمل لدينا رؤية خاصة وكبيرة في مجال الضيافة والأعراس. نطمح لصُنع بصمة مختلفة جداً حتى في طريقة التقديم — من تفاصيل القائمة إلى أسلوب التقديم واللوجستيات على أعلى مستوى من المسؤولية.
+        </p>
+        <p style="margin-top:12px">خلال العامين الماضيين، ومن خلال مراجعة أرشيف ذكرياتنا المليء بالشغف، تأكدنا أننا قدّمنا ما سعينا إليه: من أعراس مختلطة وتقليدية، إلى shower parties، حفلات خطوبة، غداء أعراس، مؤتمرات وافتتاحات، وحتى تغطية لشخصيات دبلوماسية كسفراء ووزراء.
+        </p>
+        <p style="margin-top:12px">نرحب بحجوزاتكم واستفساراتكم عن الخدمات التي نقدمها. نستطيع تقديم خدمات ضيافة كاملة ضمن برنامج مخصصة — من أي نقطة من البحر إلى النهر على هذه الأرض المقدسة.</p>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="section-title"><h2>الخدمات المقدمة</h2></div>
+      <div class="grid-3">
+        <div class="card"><h4>Showbar “Summer”</h4><p>تصميم بار موسمي خاص بالعروض الصيفية والتقديم المميز.</p></div>
+        <div class="card"><h4>Colde Bar</h4><p>قوائم مشروبات باردة مع بارستا محترف.</p></div>
+        <div class="card"><h4>Hot Bar</h4><p>قوائم مشروبات ساخنة مع بارستا محترف.</p></div>
+        <div class="card"><h4>Service and safarijieh</h4><p>طاقم سيرفس متكامل وخدمات تقديم مرافقة.</p></div>
+        <div class="card"><h4>Caltree</h4><p>توفير الصحون، المعالق، الشوك، السكاكين وكل أدوات المائدة.</p></div>
+        <div class="card"><h4>Hookah</h4><p>خدمة أراجيل احترافية بمناطق مخصصة.</p></div>
+        <div class="card"><h4>Salads and appetizers</h4><p>قوائم سلطات ومقبلات متنوّعة تناسب مختلف الأذواق.</p></div>
+        <div class="card"><h4>Backstage</h4><p>خدمات خلف الكواليس للاعراس الغير مختلطة واللوجستيات لضمان سير الحدث بسلاسة.</p></div>
+        <div class="card"><h4>Fruit bowls and buffets</h4><p>تقديم بوفيهات فواكه وجاطات أنيقة تناسب الحفلات الكبرى.</p></div>
+        <div class="card"><h4>Sweets</h4><p>قوائم حلويات مميزة تناسب ذوقكم وموضوع الحفل.</p></div>
+        <div class="card"><h4>Security</h4><p>خدمات أمن وتنظيم للحفاظ على سير الحفل وسلامة الضيوف.</p></div>
+        <div class="card"><h4>Valet</h4><p>خدمة صف السيارات (Valet) عالية التنظيم للضيوف.</p></div>
+        <div class="card"><h4>reception</h4><p>فريق استقبال محترف لاستقبال الضيوف وإدارة القوائم.</p></div>
+      </div>
+    </section>
+
+    <section id="booking">
+      <div class="booking">
+        <aside class="card contact-list" style="height:100%">
+          <h3 style="margin-top:0">تواصل سريع</h3>
+          <div class="wa">
+            <div style="flex:1">
+              <strong>فلسطين</strong>
+              <p id="phone-ps">+972594907130</p>
+            </div>
+            <a href="#" id="wa-ps">WhatsApp</a>
+          </div>
+
+          <div class="wa">
+            <div style="flex:1">
+              <strong>الأردن</strong>
+              <p id="phone-jo">+962XXXXXXXX</p>
+            </div>
+            <a href="#" id="wa-jo">WhatsApp</a>
+          </div>
+
+          <div style="margin-top:8px">
+            <h4>مواقعنا على السوشال</h4>
+            <div class="social-icons">
+              <a href="https://www.instagram.com/sway.ps/" id="ig" class="social-icon instagram" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </a>
+              <a href="https://www.facebook.com/people/Swayps/100083471613966/?mibextid=wwXIfr&rdid=chVBv9wAIo8ud6Fn&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1J6E8MgKFs%2F%3Fmibextid%3DwwXIfr" id="fb" class="social-icon facebook" target="_blank" rel="noopener" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" xmlns="https://www.facebook.com/people/Swayps/100083471613966/?mibextid=wwXIfr&rdid=chVBv9wAIo8ud6Fn&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1J6E8MgKFs%2F%3Fmibextid%3DwwXIfr">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+              <a href="https://www.tiktok.com/@sawy.bar" id="tt" class="social-icon tiktok" target="_blank" rel="noopener" aria-label="TikTok">
+                <svg viewBox="0 0 24 24" xmlns="https://www.tiktok.com/@sawy.bar">
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                </svg>
+              </a>
+              <a href="https://www.snapchat.com/@sway.ps" id="sc" class="social-icon snapchat" target="_blank" rel="noopener" aria-label="Snapchat">
+                <img src="snapchat-circle.png" alt="Snapchat" style="width:100%;height:100%;object-fit:contain">
+              </a>
+            </div>
+          </div>
+
+          <div style="margin-top:auto">
+            <small>مناطق العمل: فلسطين و الأردن</small>
+          </div>
+        </aside>
+         <div style="margin-top:12px" class="card">
+            <h4>ملاحظة : </h4>
+            <p>سيتم التواصل معكم خلال 24 ساعة.</p>
+          </div>
+        </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container foot-grid">
+      <div>
+        <strong>Sway</strong>
+        <p style="margin:6px 0 0">جميع الحقوق محفوظة © <span id="year"></span></p>
+      </div>
+      <div>
+        <small>تم التصميم والتطوير بواسطة فريق DataLab_by_Jihad </small>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // small helpers: replace placeholders easily
+    const LOGO_URL = 'photo_2025-11-25_23-24-53-removebg-preview.png';
+    const INSTAGRAM = 'https://www.instagram.com/sway.ps/';
+    const FACEBOOK = 'https://www.facebook.com/people/Swayps/100083471613966/?mibextid=wwXIfr&rdid=chVBv9wAIo8ud6Fn&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1J6E8MgKFs%2F%3Fmibextid%3DwwXIfr';
+    const TIKTOK = 'https://www.tiktok.com/@sawy.bar';
+    const SNAPCHAT = 'https://www.snapchat.com/@sway.ps';
+
+    // Set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Carousel video rotation
+    (function(){
+      const carousel = document.getElementById('carousel');
+      if(!carousel) return;
+      const videos = Array.from(carousel.querySelectorAll('video'));
+      let idx = 0;
+
+      function playNext() {
+        const currentVideo = videos[idx];
+        const nextIdx = (idx + 1) % videos.length;
+        const nextVideo = videos[nextIdx];
+
+        currentVideo.style.opacity = 0;
+        currentVideo.style.position = 'absolute';
+        currentVideo.pause();
+        currentVideo.currentTime = 0;
+
+        nextVideo.style.opacity = 1;
+        nextVideo.style.position = 'static';
+        nextVideo.play();
+
+        idx = nextIdx;
+      }
+
+      videos.forEach(video => {
+        video.loop = false;
+        video.addEventListener('ended', playNext);
+      });
+
+      // Start the first video
+      if(videos.length > 0) {
+          videos[0].play().catch(e => console.error("Video play failed: ", e));
+      }
+    })();
+
+    // WhatsApp quick contact
+    function openWhatsApp(phone){
+      const text = encodeURIComponent('مرحباً، أود طلب عرض لحفل مع Sway. الرجاء التواصل.');
+      const link = 'https://wa.me/'+phone.replace(/[^0-9+]/g,'')+'?text='+text;
+      window.open(link,'_blank');
+    }
+
+    document.getElementById('wa-ps').addEventListener('click', function(e){e.preventDefault();openWhatsApp(document.getElementById('phone-ps').textContent.trim())});
+    document.getElementById('wa-jo').addEventListener('click', function(e){e.preventDefault();openWhatsApp(document.getElementById('phone-jo').textContent.trim())});
+
+    // social links - replace placeholders
+    document.getElementById('ig').href = INSTAGRAM;
+    if(FACEBOOK !== 'FACEBOOK_LINK') document.getElementById('fb').href = FACEBOOK;
+    if(TIKTOK !== 'TIKTOK_LINK') document.getElementById('tt').href = TIKTOK;
+    if(SNAPCHAT !== 'SNAPCHAT_LINK') document.getElementById('sc').href = SNAPCHAT;
+  </script>
+</body>
+</html>
