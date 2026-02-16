@@ -38,6 +38,7 @@
             background: #0a0a0a;
             color: #fff;
             overflow-x: hidden;
+            transition: all 0.3s ease;
         }
 
         /* Navigation */
@@ -80,6 +81,7 @@
             display: flex;
             gap: 40px;
             list-style: none;
+            align-items: center;
         }
 
         .menu-toggle {
@@ -135,6 +137,23 @@
 
         .nav-links a:hover {
             color: #DAA520;
+        }
+
+        .lang-toggle {
+            background: rgba(218, 165, 32, 0.1);
+            border: 2px solid #DAA520;
+            color: #DAA520;
+            padding: 8px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            background: #DAA520;
+            color: #0a0a0a;
         }
 
         /* Hero Section */
@@ -286,10 +305,12 @@
             border-color: rgba(218, 165, 32, 0.3);
         }
 
-        .video-card video {
+        .video-card video,
+        .video-card img {
             width: 100%;
             height: 250px;
             object-fit: cover;
+            display: block;
         }
 
         .video-caption {
@@ -391,6 +412,11 @@
             color: #DAA520;
             margin-left: 10px;
             font-size: 12px;
+        }
+
+        [dir="ltr"] .service-list li::before {
+            margin-left: 0;
+            margin-right: 10px;
         }
 
         .service-list li:hover {
@@ -583,8 +609,19 @@
                 z-index: 999;
             }
 
+            [dir="ltr"] .nav-links {
+                right: auto;
+                left: -100%;
+                transition: left 0.3s ease;
+            }
+
             .nav-links.active {
                 right: 0;
+            }
+
+            [dir="ltr"] .nav-links.active {
+                right: auto;
+                left: 0;
             }
 
             .nav-links a {
@@ -663,7 +700,8 @@
                 max-width: 100%;
             }
 
-            .video-card video {
+            .video-card video,
+            .video-card img {
                 height: 200px;
             }
 
@@ -769,7 +807,8 @@
                 padding: 25px 15px;
             }
 
-            .video-card video {
+            .video-card video,
+            .video-card img {
                 height: 180px;
             }
 
@@ -813,10 +852,11 @@
                 <span></span>
             </div>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#photos">صور</a></li>
-                <li><a href="#vision">رؤيتنا</a></li>
-                <li><a href="#services">الخدمات</a></li>
-                <li><a href="#booking">تواصل معنا</a></li>
+                <li><a href="#photos" data-en="Photos" data-ar="صور">صور</a></li>
+                <li><a href="#vision" data-en="Our Vision" data-ar="رؤيتنا">رؤيتنا</a></li>
+                <li><a href="#services" data-en="Services" data-ar="الخدمات">الخدمات</a></li>
+                <li><a href="#booking" data-en="Contact Us" data-ar="تواصل معنا">تواصل معنا</a></li>
+                <li><button class="lang-toggle" id="langToggle">English</button></li>
             </ul>
         </div>
     </nav>
@@ -829,58 +869,58 @@
         <div class="hero-bg"></div>
         <div class="hero-content">
             <h1>Sway</h1>
-            <h2>إحياء الحفلات</h2>
-            <p>مشاريب، طعام، وتموين في فلسطين والأردن — نجعل مناسباتكم لا تُنسى</p>
+            <h2 data-en="Event Hosting" data-ar="إحياء الحفلات">إحياء الحفلات</h2>
+            <p data-en="Beverages, Food & Catering in Palestine and Jordan — Making your occasions unforgettable" data-ar="مشاريب، طعام، وتموين في فلسطين والأردن — نجعل مناسباتكم لا تُنسى">مشاريب، طعام، وتموين في فلسطين والأردن — نجعل مناسباتكم لا تُنسى</p>
             <div class="cta-buttons">
-                <a href="#booking" class="btn btn-primary">احجز الآن</a>
-                <a href="#services" class="btn btn-secondary">الخدمات</a>
+                <a href="#booking" class="btn btn-primary" data-en="Book Now" data-ar="احجز الآن">احجز الآن</a>
+                <a href="#services" class="btn btn-secondary" data-en="Services" data-ar="الخدمات">الخدمات</a>
             </div>
         </div>
     </section>
 
     <!-- Featured Services -->
     <section class="services" style="padding: 80px 40px;">
-        <h2 class="section-title">خدماتنا المميزة</h2>
+        <h2 class="section-title" data-en="Our Featured Services" data-ar="خدماتنا المميزة">خدماتنا المميزة</h2>
         <div class="services-grid">
             <div class="service-card">
-                <h3>خدمات البار</h3>
+                <h3 data-en="Bar Services" data-ar="خدمات البار">خدمات البار</h3>
                 <ul class="service-list">
-                    <li>بار متنقل احترافي</li>
-                    <li>قوائم مشروبات مخصصة</li>
+                    <li data-en="Professional mobile bar" data-ar="بار متنقل احترافي">بار متنقل احترافي</li>
+                    <li data-en="Customized drink menus" data-ar="قوائم مشروبات مخصصة">قوائم مشروبات مخصصة</li>
                 </ul>
             </div>
             <div class="service-card">
-                <h3>الطعام والتموين</h3>
+                <h3 data-en="Food & Catering" data-ar="الطعام والتموين">الطعام والتموين</h3>
                 <ul class="service-list">
-                    <li>تنسيق أطباق تموينية</li>
-                    <li>قوائم طعام منتقاة بعناية</li>
+                    <li data-en="Catering dish coordination" data-ar="تنسيق أطباق تموينية">تنسيق أطباق تموينية</li>
+                    <li data-en="Carefully curated food menus" data-ar="قوائم طعام منتقاة بعناية">قوائم طعام منتقاة بعناية</li>
                 </ul>
             </div>
             <div class="service-card">
-                <h3>الخدمات اللوجستية</h3>
+                <h3 data-en="Logistics Services" data-ar="الخدمات اللوجستية">الخدمات اللوجستية</h3>
                 <ul class="service-list">
-                    <li>طاقم خدمة وتجهيز موقع الحفل</li>
-                    <li>طاقم نسائي متخصص</li>
+                    <li data-en="Service staff and event setup" data-ar="طاقم خدمة وتجهيز موقع الحفل">طاقم خدمة وتجهيز موقع الحفل</li>
+                    <li data-en="Specialized female staff" data-ar="طاقم نسائي متخصص">طاقم نسائي متخصص</li>
                 </ul>
             </div>
         </div>
         
         <div class="services-grid" style="margin-top: 30px;">
             <div class="service-card">
-                <h3>المناسبات الرسمية</h3>
+                <h3 data-en="Official Events" data-ar="المناسبات الرسمية">المناسبات الرسمية</h3>
                 <ul class="service-list">
-                    <li>تلبية المناسبات الدوبلوماسية والرسمية</li>
-                    <li>معارض ومؤتمرات</li>
-                    <li>افتتاحات</li>
+                    <li data-en="Diplomatic and official events" data-ar="تلبية المناسبات الدوبلوماسية والرسمية">تلبية المناسبات الدوبلوماسية والرسمية</li>
+                    <li data-en="Exhibitions and conferences" data-ar="معارض ومؤتمرات">معارض ومؤتمرات</li>
+                    <li data-en="Openings" data-ar="افتتاحات">افتتاحات</li>
                 </ul>
             </div>
             <div class="service-card">
-                <h3>المناسبات الخاصة</h3>
+                <h3 data-en="Special Occasions" data-ar="المناسبات الخاصة">المناسبات الخاصة</h3>
                 <ul class="service-list">
-                    <li>حفلات خطوبة</li>
-                    <li>شاور بارتي</li>
-                    <li>اعراس</li>
-                    <li>أعياد ميلاد</li>
+                    <li data-en="Engagement parties" data-ar="حفلات خطوبة">حفلات خطوبة</li>
+                    <li data-en="Shower parties" data-ar="شاور بارتي">شاور بارتي</li>
+                    <li data-en="Weddings" data-ar="اعراس">اعراس</li>
+                    <li data-en="Birthdays" data-ar="أعياد ميلاد">أعياد ميلاد</li>
                 </ul>
             </div>
         </div>
@@ -888,30 +928,30 @@
 
     <!-- Coverage -->
     <section class="coverage">
-        <h3>مساحات التغطية</h3>
-        <p>فلسطين • الأردن</p>
+        <h3 data-en="Coverage Areas" data-ar="مساحات التغطية">مساحات التغطية</h3>
+        <p data-en="Palestine • Jordan" data-ar="فلسطين • الأردن">فلسطين • الأردن</p>
     </section>
 
     <!-- Video Gallery -->
     <section id="photos" style="padding: 120px 40px; background: #0a0a0a;">
-        <h2 class="section-title">مقتطفات من حفلاتنا</h2>
+        <h2 class="section-title" data-en="Highlights from Our Events" data-ar="مقتطفات من حفلاتنا">مقتطفات من حفلاتنا</h2>
         <div class="video-gallery">
             <div class="video-card">
-                <video src="2.mp4" controls autoplay loop muted></video>
+                <img src="1.jpg" alt="Event Photo 1">
                 <div class="video-caption">
-                    <p>تصاميم تقديم احتفالية ومشروبات مميزة.</p>
+                    <p data-en="Celebratory presentation designs and distinctive beverages." data-ar="تصاميم تقديم احتفالية ومشروبات مميزة.">تصاميم تقديم احتفالية ومشروبات مميزة.</p>
                 </div>
             </div>
             <div class="video-card">
-                <video src="1.mp4" controls autoplay loop muted></video>
+                <img src="2.jpg" alt="Event Photo 2">
                 <div class="video-caption">
-                    <p>قوائم طعام منتقاة بعناية.</p>
+                    <p data-en="Carefully curated food menus." data-ar="قوائم طعام منتقاة بعناية.">قوائم طعام منتقاة بعناية.</p>
                 </div>
             </div>
             <div class="video-card">
-                <video src="3.mp4" controls autoplay loop muted></video>
+                <img src="3.jpg" alt="Event Photo 3">
                 <div class="video-caption">
-                    <p>طاقم محترف وتجهيز متكامل.</p>
+                    <p data-en="Professional staff and complete setup." data-ar="طاقم محترف وتجهيز متكامل.">طاقم محترف وتجهيز متكامل.</p>
                 </div>
             </div>
         </div>
@@ -919,89 +959,89 @@
 
     <!-- Vision Section -->
     <section id="vision" class="vision">
-        <h2 class="section-title">رؤيتنا</h2>
+        <h2 class="section-title" data-en="Our Vision" data-ar="رؤيتنا">رؤيتنا</h2>
         <div class="vision-content">
-            <p>بدأت فكرة <strong>Sway</strong> في عام 2021 واستمرت حتى يومنا هذا، ومع دخولنا للفصل القادم من العمل لدينا رؤية خاصة وكبيرة في مجال الضيافة والأعراس. نطمح لصُنع بصمة مختلفة جداً حتى في طريقة التقديم — من تفاصيل القائمة إلى أسلوب التقديم واللوجستيات على أعلى مستوى من المسؤولية.</p>
+            <p class="vision-text" data-en="The idea of <strong>Sway</strong> started in 2021 and continues to this day. As we enter the next chapter of our work, we have a special and ambitious vision in the field of hospitality and weddings. We aspire to make a very different mark, even in the way we present — from menu details to service style and logistics at the highest level of responsibility." data-ar="بدأت فكرة <strong>Sway</strong> في عام 2021 واستمرت حتى يومنا هذا، ومع دخولنا للفصل القادم من العمل لدينا رؤية خاصة وكبيرة في مجال الضيافة والأعراس. نطمح لصُنع بصمة مختلفة جداً حتى في طريقة التقديم — من تفاصيل القائمة إلى أسلوب التقديم واللوجستيات على أعلى مستوى من المسؤولية.">بدأت فكرة <strong>Sway</strong> في عام 2021 واستمرت حتى يومنا هذا، ومع دخولنا للفصل القادم من العمل لدينا رؤية خاصة وكبيرة في مجال الضيافة والأعراس. نطمح لصُنع بصمة مختلفة جداً حتى في طريقة التقديم — من تفاصيل القائمة إلى أسلوب التقديم واللوجستيات على أعلى مستوى من المسؤولية.</p>
             
-            <p>خلال العامين الماضيين، ومن خلال مراجعة أرشيف ذكرياتنا المليء بالشغف، تأكدنا أننا قدّمنا ما سعينا إليه: من أعراس مختلطة وتقليدية، إلى shower parties، حفلات خطوبة، غداء أعراس، مؤتمرات وافتتاحات، وحتى تغطية لشخصيات دبلوماسية كسفراء ووزراء.</p>
+            <p class="vision-text" data-en="Over the past two years, by reviewing our archive of memories filled with passion, we confirmed that we delivered what we aimed for: from mixed and traditional weddings, to shower parties, engagement parties, wedding lunches, conferences and openings, and even coverage for diplomatic figures such as ambassadors and ministers." data-ar="خلال العامين الماضيين، ومن خلال مراجعة أرشيف ذكرياتنا المليء بالشغف، تأكدنا أننا قدّمنا ما سعينا إليه: من أعراس مختلطة وتقليدية، إلى shower parties، حفلات خطوبة، غداء أعراس، مؤتمرات وافتتاحات، وحتى تغطية لشخصيات دبلوماسية كسفراء ووزراء.">خلال العامين الماضيين، ومن خلال مراجعة أرشيف ذكرياتنا المليء بالشغف، تأكدنا أننا قدّمنا ما سعينا إليه: من أعراس مختلطة وتقليدية، إلى shower parties، حفلات خطوبة، غداء أعراس، مؤتمرات وافتتاحات، وحتى تغطية لشخصيات دبلوماسية كسفراء ووزراء.</p>
             
-            <p>نرحب بحجوزاتكم واستفساراتكم عن الخدمات التي نقدمها. نستطيع تقديم خدمات ضيافة كاملة ضمن برنامج مخصصة — من أي نقطة من البحر إلى النهر على هذه الأرض المقدسة.</p>
+            <p class="vision-text" data-en="We welcome your bookings and inquiries about the services we provide. We can offer complete hospitality services within a customized program — from any point from the sea to the river on this holy land." data-ar="نرحب بحجوزاتكم واستفساراتكم عن الخدمات التي نقدمها. نستطيع تقديم خدمات ضيافة كاملة ضمن برنامج مخصصة — من أي نقطة من البحر إلى النهر على هذه الأرض المقدسة.">نرحب بحجوزاتكم واستفساراتكم عن الخدمات التي نقدمها. نستطيع تقديم خدمات ضيافة كاملة ضمن برنامج مخصصة — من أي نقطة من البحر إلى النهر على هذه الأرض المقدسة.</p>
         </div>
     </section>
 
     <!-- Services Detailed -->
     <section id="services" class="services">
-        <h2 class="section-title">الخدمات المقدمة</h2>
+        <h2 class="section-title" data-en="Our Services" data-ar="الخدمات المقدمة">الخدمات المقدمة</h2>
         <div class="services-grid">
             <div class="service-card">
                 <h3>Cold Bar</h3>
-                <p>قوائم مشروبات باردة مع بارستا محترف.</p>
+                <p data-en="Cold drink menus with professional barista." data-ar="قوائم مشروبات باردة مع بارستا محترف.">قوائم مشروبات باردة مع بارستا محترف.</p>
             </div>
             <div class="service-card">
                 <h3>Hot Bar</h3>
-                <p>قوائم مشروبات ساخنة مع بارستا محترف.</p>
+                <p data-en="Hot drink menus with professional barista." data-ar="قوائم مشروبات ساخنة مع بارستا محترف.">قوائم مشروبات ساخنة مع بارستا محترف.</p>
             </div>
             <div class="service-card">
                 <h3>Service and Waiters</h3>
-                <p>طاقم سيرفس متكامل وخدمات تقديم مرافقة.</p>
+                <p data-en="Complete service staff and accompanying presentation services." data-ar="طاقم سيرفس متكامل وخدمات تقديم مرافقة.">طاقم سيرفس متكامل وخدمات تقديم مرافقة.</p>
             </div>
             <div class="service-card">
-                <h3>Caltree</h3>
-                <p>توفير الصحون، المعالق، الشوك، السكاكين وكل أدوات المائدة.</p>
+                <h3>Cutlery</h3>
+                <p data-en="Providing plates, spoons, forks, knives and all tableware." data-ar="توفير الصحون، المعالق، الشوك، السكاكين وكل أدوات المائدة.">توفير الصحون، المعالق، الشوك، السكاكين وكل أدوات المائدة.</p>
             </div>
             <div class="service-card">
                 <h3>Hookah</h3>
-                <p>خدمة أراجيل احترافية بمناطق مخصصة.</p>
+                <p data-en="Professional hookah service in designated areas." data-ar="خدمة أراجيل احترافية بمناطق مخصصة.">خدمة أراجيل احترافية بمناطق مخصصة.</p>
             </div>
             <div class="service-card">
                 <h3>Salads and Appetizers</h3>
-                <p>قوائم سلطات ومقبلات متنوّعة تناسب مختلف الأذواق.</p>
+                <p data-en="Varied salad and appetizer menus to suit different tastes." data-ar="قوائم سلطات ومقبلات متنوّعة تناسب مختلف الأذواق.">قوائم سلطات ومقبلات متنوّعة تناسب مختلف الأذواق.</p>
             </div>
             <div class="service-card">
                 <h3>Backstage</h3>
-                <p>خدمات خلف الكواليس للاعراس الغير مختلطة واللوجستيات لضمان سير الحدث بسلاسة.</p>
+                <p data-en="Behind-the-scenes services for gender-segregated weddings and logistics to ensure smooth event flow." data-ar="خدمات خلف الكواليس للاعراس الغير مختلطة واللوجستيات لضمان سير الحدث بسلاسة.">خدمات خلف الكواليس للاعراس الغير مختلطة واللوجستيات لضمان سير الحدث بسلاسة.</p>
             </div>
             <div class="service-card">
                 <h3>Fruit Bowls and Buffets</h3>
-                <p>تقديم بوفيهات فواكه وجاطات أنيقة تناسب الحفلات الكبرى.</p>
+                <p data-en="Elegant fruit buffets and bowls suitable for large events." data-ar="تقديم بوفيهات فواكه وجاطات أنيقة تناسب الحفلات الكبرى.">تقديم بوفيهات فواكه وجاطات أنيقة تناسب الحفلات الكبرى.</p>
             </div>
             <div class="service-card">
                 <h3>Sweets</h3>
-                <p>قوائم حلويات مميزة تناسب ذوقكم وموضوع الحفل.</p>
+                <p data-en="Distinctive dessert menus to suit your taste and event theme." data-ar="قوائم حلويات مميزة تناسب ذوقكم وموضوع الحفل.">قوائم حلويات مميزة تناسب ذوقكم وموضوع الحفل.</p>
             </div>
             <div class="service-card">
                 <h3>Security</h3>
-                <p>خدمات أمن وتنظيم للحفاظ على سير الحفل وسلامة الضيوف.</p>
+                <p data-en="Security and organization services to maintain event flow and guest safety." data-ar="خدمات أمن وتنظيم للحفاظ على سير الحفل وسلامة الضيوف.">خدمات أمن وتنظيم للحفاظ على سير الحفل وسلامة الضيوف.</p>
             </div>
             <div class="service-card">
                 <h3>Valet</h3>
-                <p>خدمة صف السيارات (Valet) عالية التنظيم للضيوف.</p>
+                <p data-en="Highly organized valet parking service for guests." data-ar="خدمة صف السيارات (Valet) عالية التنظيم للضيوف.">خدمة صف السيارات (Valet) عالية التنظيم للضيوف.</p>
             </div>
             <div class="service-card">
                 <h3>Reception</h3>
-                <p>فريق استقبال محترف لاستقبال الضيوف وإدارة القوائم.</p>
+                <p data-en="Professional reception team to welcome guests and manage lists." data-ar="فريق استقبال محترف لاستقبال الضيوف وإدارة القوائم.">فريق استقبال محترف لاستقبال الضيوف وإدارة القوائم.</p>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="booking" class="contact">
-        <h2 class="section-title">تواصل معنا</h2>
+        <h2 class="section-title" data-en="Contact Us" data-ar="تواصل معنا">تواصل معنا</h2>
         <div class="contact-grid">
             <div class="contact-card">
-                <h3>فلسطين</h3>
+                <h3 data-en="Palestine" data-ar="فلسطين">فلسطين</h3>
                 <p>+972594907130</p>
-                <a href="https://wa.me/972594907130?text=مرحباً، أود طلب عرض لحفل مع Sway. الرجاء التواصل." class="btn btn-primary" style="margin-top: 20px;">WhatsApp</a>
+                <a href="https://wa.me/972594907130?text=احجز الان ,مع Sway مناسبتك متميزة" class="btn btn-primary" style="margin-top: 20px;">WhatsApp</a>
             </div>
             <div class="contact-card">
-                <h3>الأردن</h3>
-                <p>+962XXXXXXXX</p>
-                <a href="https://wa.me/962XXXXXXXX?text=مرحباً، أود طلب عرض لحفل مع Sway. الرجاء التواصل." class="btn btn-primary" style="margin-top: 20px;">WhatsApp</a>
+                <h3 data-en="Jordan" data-ar="الأردن">الأردن</h3>
+                <p>+96279632411</p>
+                <a href="https://wa.me/96279632411?text=احجز الان ,مع Sway مناسبتك متميزة" class="btn btn-primary" style="margin-top: 20px;">WhatsApp</a>
             </div>
         </div>
 
         <div style="text-align: center; margin-top: 60px;">
-            <h3 style="color: #DAA520; font-size: 28px; margin-bottom: 30px;">مواقعنا على السوشال</h3>
+            <h3 style="color: #DAA520; font-size: 28px; margin-bottom: 30px;" data-en="Our Social Media" data-ar="مواقعنا على السوشال">مواقعنا على السوشال</h3>
             <div class="social-icons">
                 <a href="https://www.instagram.com/sway.ps/" target="_blank" rel="noopener" aria-label="Instagram" style="background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);">
                     <svg viewBox="0 0 24 24" fill="white" style="width: 30px; height: 30px;">
@@ -1022,16 +1062,16 @@
                     <img src="snapchat-circle.png" alt="Snapchat">
                 </a>
             </div>
-            <p style="color: #aaa; margin-top: 40px; font-size: 18px;">مناطق العمل: فلسطين و الأردن</p>
-            <p style="color: #888; margin-top: 20px; font-style: italic;">ملاحظة: سيتم التواصل معكم خلال 24 ساعة.</p>
+            <p style="color: #aaa; margin-top: 40px; font-size: 18px;" data-en="Work Areas: Palestine & Jordan" data-ar="مناطق العمل: فلسطين و الأردن">مناطق العمل: فلسطين و الأردن</p>
+            <p style="color: #888; margin-top: 20px; font-style: italic;" data-en="Note: We will contact you within 24 hours." data-ar="ملاحظة: سيتم التواصل معكم خلال 24 ساعة.">ملاحظة: سيتم التواصل معكم خلال 24 ساعة.</p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <p style="font-size: 18px; color: #DAA520; font-weight: 600; margin-bottom: 20px;">Sway</p>
-        <p>جميع الحقوق محفوظة ©</p>
-        <p style="font-size: 14px; margin-top: 15px;">تم التصميم والتطوير بواسطة فريق DataLab_by_Jihad</p>
+        <p data-en="All rights reserved ©" data-ar="جميع الحقوق محفوظة ©">جميع الحقوق محفوظة ©</p>
+        <p style="font-size: 14px; margin-top: 15px;" data-en="Designed and developed by DataLab_by_Jihad team" data-ar="تم التصميم والتطوير بواسطة فريق DataLab_by_Jihad">تم التصميم والتطوير بواسطة فريق DataLab_by_Jihad</p>
     </footer>
 
     <script>
@@ -1098,11 +1138,44 @@
             observer.observe(el);
         });
 
+        // Language Toggle
+        const langToggle = document.getElementById('langToggle');
+        let currentLang = 'ar';
+
+        langToggle.addEventListener('click', () => {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            document.documentElement.setAttribute('lang', currentLang);
+            document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+            
+            // Update button text
+            langToggle.textContent = currentLang === 'ar' ? 'English' : 'العربية';
+            
+            // Update all elements with data-en and data-ar
+            document.querySelectorAll('[data-en][data-ar]').forEach(el => {
+                const enText = el.getAttribute('data-en');
+                const arText = el.getAttribute('data-ar');
+                if (enText && arText) {
+                    // Check if element contains HTML (like <strong> tags)
+                    if (el.querySelector('strong') || enText.includes('<strong>') || arText.includes('<strong>')) {
+                        el.innerHTML = currentLang === 'en' ? enText : arText;
+                    } else {
+                        el.textContent = currentLang === 'en' ? enText : arText;
+                    }
+                }
+            });
+        });
+
         // Set year in footer
-        const yearElement = document.querySelector('footer p:last-of-type');
-        if (yearElement && !yearElement.textContent.includes('202')) {
+        const yearElement = document.querySelector('footer p:nth-child(2)');
+        if (yearElement) {
             const currentYear = new Date().getFullYear();
-            yearElement.textContent = yearElement.textContent.replace('©', `© ${currentYear}`);
+            const arText = yearElement.getAttribute('data-ar');
+            const enText = yearElement.getAttribute('data-en');
+            if (arText && enText && !arText.includes(currentYear)) {
+                yearElement.setAttribute('data-ar', `${arText} ${currentYear}`);
+                yearElement.setAttribute('data-en', `${enText} ${currentYear}`);
+                yearElement.textContent = `${arText} ${currentYear}`;
+            }
         }
     </script>
 </body>
