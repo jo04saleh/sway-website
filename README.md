@@ -474,7 +474,7 @@ For detailed documentation, visit:
 
 ### Made with ❤️ in Palestine & Jordan
 
-**Sway Events © 2025**  
+**DataLab_with_JihadAbuSaleh © 2025**  
 *Creating Unforgettable Moments Since 2021*
 
 [![Palestine](https://img.shields.io/badge/🇵🇸-Palestine-00C853?style=for-the-badge)](https://swaybar.netlify.app/)
